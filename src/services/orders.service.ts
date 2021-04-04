@@ -16,6 +16,10 @@ export class OrdersService {
         return await this.orderRepository.find();
     }
 
+    public async findById(id: number): Promise<Order | null> {
+        return await this.orderRepository.findOneOrFail(id);
+    }
+
     public async create(order: OrdersData): Promise<Order> {
         return await this.orderRepository.save(order);
     }

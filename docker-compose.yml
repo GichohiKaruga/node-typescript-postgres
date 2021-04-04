@@ -18,7 +18,7 @@ services:
   app:
     build: .
     image: node:latest
-    container_name: user
+    container_name: app
     env_file: .env
     networks:
       - postnet
