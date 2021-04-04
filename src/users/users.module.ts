@@ -13,7 +13,6 @@ import {JwtStrategy} from "./jwt.strategy";
   imports: [
     TypeOrmModule.forRoot(),
     TypeOrmModule.forFeature([User]),
-    UsersModule,
     PassportModule,
     JwtModule.register({
       secret: 'V3ryB1gS3cr3t',

@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    container_name: postgres
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "15432:5432"
+    networks:
+      - postnet
+  app:
+    build: .
+    image: node:latest
+    container_name: user
+    env_file: .env
+    networks:
+      - postnet
+    ports:
+      - "3010:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/home/node/app
+      - modules:/home/node/app/node_modules
+volumes:
+  postgres:
+  modules:
+networks:
+  postnet:

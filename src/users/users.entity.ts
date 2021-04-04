@@ -2,7 +2,7 @@ import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { UsersResponse } from './users.response';
 
-@Entity('users')
+@Entity('userdata')
 export class User {
     @PrimaryGeneratedColumn()
     id: number;
